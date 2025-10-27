@@ -75,7 +75,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl text-gray-400">
-              Y a plus qu'à cliquer
+              Y a plus qu&apos;à cliquer
             </p>
           </div>
 
@@ -93,7 +93,7 @@ export default function Home() {
                   <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/30 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform cursor-pointer">
                     <Play className="w-10 h-10 text-white ml-1" />
                   </div>
-                  <p className="text-gray-400">Vidéo d'installation à venir</p>
+                  <p className="text-gray-400">Vidéo d&apos;installation à venir</p>
                   <p className="text-sm text-gray-500 mt-2">Télécharger • Installer • Jouer</p>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function Home() {
                   </span>
                 </h3>
                 <p className="text-xl text-gray-400 leading-relaxed mb-6">
-                  Téléchargez le .dmg, glissez dans Applications, lancez. C'est tout.
+                  Téléchargez le .dmg, glissez dans Applications, lancez. C&apos;est tout.
                 </p>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -202,7 +202,7 @@ export default function Home() {
                   </span>
                 </h3>
                 <p className="text-xl text-gray-400 leading-relaxed mb-6">
-                  Sélectionnez les fenêtres que vous voulez utiliser, dans l'ordre qui vous convient.
+                  Sélectionnez les fenêtres que vous voulez utiliser, dans l&apos;ordre qui vous convient.
                 </p>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -215,7 +215,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-purple-400 mt-1">✓</span>
-                    <span>Contrôle total sur l'ordre de vos fenêtres</span>
+                    <span>Contrôle total sur l&apos;ordre de vos fenêtres</span>
                   </li>
                 </ul>
               </div>
@@ -310,7 +310,7 @@ export default function Home() {
                   </span>
                 </h3>
                 <p className="text-xl text-gray-400 leading-relaxed mb-6">
-                  Bindez vos raccourcis clavier ou boutons de souris pour switcher à la vitesse de l'éclair.
+                  Bindez vos raccourcis clavier ou boutons de souris pour switcher à la vitesse de l&apos;éclair.
                 </p>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -464,7 +464,7 @@ export default function Home() {
             Farmer © 2025 • Conçu avec ❤️‍🔥 pour la communauté Dofus Mac
           </p>
           <p className="text-xs mt-2">
-            Dofus est une marque déposée d'Ankama. Farmer est un projet indépendant.
+            Dofus est une marque déposée d&apos;Ankama. Farmer est un projet indépendant.
           </p>
         </div>
       </footer>
