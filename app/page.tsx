@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Download, MousePointer, Layers, Save, Sparkles, Play } from "lucide-react";
+import { ArrowRight, Download, MousePointer, Layers, Save, Sparkles, Play, Coffee, MessageSquare, Bug } from "lucide-react";
 
 export default function Home() {
   const handleDownload = () => {
@@ -15,8 +15,36 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Sticky Support Bar */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-900/95 via-black/95 to-gray-900/95 backdrop-blur-xl border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Coffee className="w-4 h-4 text-yellow-400" />
+            <span className="text-sm text-gray-300 hidden sm:inline">
+              Farmer est gratuit
+            </span>
+            <span className="text-sm text-gray-300 sm:hidden">
+              Soutenez le projet
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <a
+              href="https://buymeacoffee.com/baptistemorillon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-sm font-medium text-white hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 hover:scale-105"
+            >
+              <Coffee className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Buy me a coffee</span>
+              <span className="sm:hidden">Soutenir</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-12">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_50%)]" />
@@ -453,6 +481,89 @@ export default function Home() {
                 Compatible macOS 13+ • Fichier .dmg
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feedback & Bug Report Section */}
+      <section className="relative py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 mb-6">
+              <MessageSquare className="w-8 h-8 text-blue-400" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Feedback & Bug Report
+            </h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Votre retour est précieux pour améliorer Farmer. Signalez un bug, proposez une feature, ou partagez votre expérience.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* GitHub Issues */}
+            <a
+              href="https://airtable.com/appfFqCYGSrnHTIt1/shrUSnWe7gNggTib7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-3xl transition-all duration-500" />
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                    <Bug className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">Reporter un Bug</h3>
+                </div>
+                <p className="text-gray-400 mb-4">
+                  Signalez un problème technique ou un comportement inattendu de l&apos;application.
+                </p>
+                <div className="flex items-center gap-2 text-blue-400 group-hover:gap-3 transition-all">
+                  <span className="text-sm font-medium">Ouvrir une issue</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </a>
+
+            {/* Feature Request */}
+            <a
+              href="https://airtable.com/appfFqCYGSrnHTIt1/shrUSnWe7gNggTib7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:scale-[1.02]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 rounded-3xl transition-all duration-500" />
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">Proposer une Feature</h3>
+                </div>
+                <p className="text-gray-400 mb-4">
+                  Partagez vos idées pour améliorer Farmer et ajouter de nouvelles fonctionnalités.
+                </p>
+                <div className="flex items-center gap-2 text-purple-400 group-hover:gap-3 transition-all">
+                  <span className="text-sm font-medium">Suggérer une idée</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {/* Additional Contact Options */}
+          <div className="mt-8 p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p className="text-center text-gray-400 text-sm">
+              Vous pouvez aussi me contacter directement via{" "}
+              <a href="mailto:contact@farmer.app" className="text-blue-400 hover:text-blue-300 transition-colors">
+                email
+              </a>
+              {" "}ou sur{" "}
+              <a href="https://twitter.com/votre-username" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+                Twitter
+              </a>
+            </p>
           </div>
         </div>
       </section>
