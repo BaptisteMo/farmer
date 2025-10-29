@@ -31,7 +31,7 @@ export default function Home() {
 
     if (os === 'windows') {
       // Téléchargement Windows
-      link.href = '/Dofus Switcher v1.0.0.zip';
+      link.href = '/Dofus-Switcher-v1.0.0.zip';
       link.download = 'Dofus-Switcher-v1.0.0.zip';
     } else {
       // Téléchargement macOS (par défaut)
