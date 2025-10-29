@@ -1,16 +1,60 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ArrowRight, Download, MousePointer, Layers, Save, Sparkles, Play, Coffee, MessageSquare, Bug } from "lucide-react";
 
+// Hook pour détecter l'OS de l'utilisateur
+function useDetectOS() {
+  const [os, setOS] = useState<'mac' | 'windows' | 'unknown'>('unknown');
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+
+    if (userAgent.includes('mac') || userAgent.includes('darwin')) {
+      setOS('mac');
+    } else if (userAgent.includes('win')) {
+      setOS('windows');
+    } else {
+      // Fallback : Mac par défaut si détection échoue
+      setOS('mac');
+    }
+  }, []);
+
+  return os;
+}
+
 export default function Home() {
+  const os = useDetectOS();
+
   const handleDownload = () => {
-    // Télécharge le fichier .dmg depuis /public/
     const link = document.createElement('a');
-    link.href = '/Farmer.dmg';
-    link.download = 'Farmer.dmg';
+
+    if (os === 'windows') {
+      // Téléchargement Windows
+      link.href = '/Dofus Switcher v1.0.0.zip';
+      link.download = 'Dofus-Switcher-v1.0.0.zip';
+    } else {
+      // Téléchargement macOS (par défaut)
+      link.href = '/Farmer.dmg';
+      link.download = 'Farmer.dmg';
+    }
+
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  // Labels dynamiques selon l'OS
+  const osLabel = os === 'windows' ? 'Windows' : 'macOS';
+  const fileType = os === 'windows' ? '.zip' : '.dmg';
+
+  // Screenshots dynamiques selon l'OS (placeholder pour le moment)
+  const screenshots = {
+    main: os === 'windows' ? '/farmer-screenshot.jpg' : '/farmer-screenshot.jpg',
+    feature1: os === 'windows' ? '/farmer-screenshot.jpg' : '/farmer-screenshot.jpg', // Installation
+    feature2: os === 'windows' ? '/farmer-screenshot.jpg' : '/farmer-screenshot.jpg', // Organisation
+    feature3: os === 'windows' ? '/farmer-screenshot.jpg' : '/farmer-screenshot.jpg', // Sauvegarde
+    feature4: os === 'windows' ? '/farmer-screenshot.jpg' : '/farmer-screenshot.jpg', // Raccourcis
   };
 
   return (
@@ -53,7 +97,9 @@ export default function Home() {
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-8 hover:bg-white/15 transition-all duration-300">
             <Sparkles className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-medium">Pour les joueurs Dofus sur Mac</span>
+            <span className="text-sm font-medium">
+              Pour les joueurs Dofus sur {os === 'windows' ? 'Windows & Mac' : 'Mac & Windows'}
+            </span>
           </div>
 
           {/* Main Heading */}
@@ -62,11 +108,11 @@ export default function Home() {
           </h1>
 
           <p className="text-xl md:text-3xl text-gray-300 mb-4 font-semibold">
-            Le multi-fenêtrage réinventé pour Mac
+            Le multi-fenêtrage réinventé
           </p>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-            Tes potes sous Windows passeront sur Mac pour jouer aussi vite que toi
+            Switche entre tes fenêtres Dofus à la vitesse de l&apos;éclair
           </p>
 
           {/* CTA Button */}
@@ -75,12 +121,12 @@ export default function Home() {
             className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-lg font-semibold hover:from-blue-500 hover:to-purple-500 transform hover:scale-105 transition-all duration-300 shadow-2xl shadow-blue-500/50"
           >
             <Download className="w-5 h-5" />
-            <span>Télécharger gratuitement</span>
+            <span>Télécharger pour {osLabel}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
 
           <p className="text-sm text-gray-500 mt-4">
-            Gratuit • Aucun compte requis
+            Gratuit • Open Source • Fichier {fileType}
           </p>
         </div>
 
@@ -190,8 +236,8 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="relative bg-gradient-to-br from-gray-900 to-black p-2 rounded-2xl border border-blue-500/20 shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500">
                   <img
-                    src="/farmer-screenshot.jpg"
-                    alt="Installation simple de Farmer"
+                    src={screenshots.feature1}
+                    alt={`Installation simple de Farmer sur ${osLabel}`}
                     className="w-full h-auto rounded-xl"
                   />
                 </div>
@@ -205,8 +251,8 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="relative bg-gradient-to-br from-gray-900 to-black p-2 rounded-2xl border border-purple-500/20 shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500">
                   <img
-                    src="/farmer-screenshot.jpg"
-                    alt="Organisation des fenêtres Dofus"
+                    src={screenshots.feature2}
+                    alt={`Organisation des fenêtres Dofus sur ${osLabel}`}
                     className="w-full h-auto rounded-xl"
                   />
                 </div>
@@ -286,8 +332,8 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="relative bg-gradient-to-br from-gray-900 to-black p-2 rounded-2xl border border-pink-500/20 shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500">
                   <img
-                    src="/farmer-screenshot.jpg"
-                    alt="Sauvegarde des configurations"
+                    src={screenshots.feature3}
+                    alt={`Sauvegarde des configurations sur ${osLabel}`}
                     className="w-full h-auto rounded-xl"
                   />
                 </div>
@@ -307,8 +353,8 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="relative bg-gradient-to-br from-gray-900 to-black p-2 rounded-2xl border border-green-500/20 shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500">
                   <img
-                    src="/farmer-screenshot.jpg"
-                    alt="Configuration des raccourcis"
+                    src={screenshots.feature4}
+                    alt={`Configuration des raccourcis sur ${osLabel}`}
                     className="w-full h-auto rounded-xl"
                   />
                 </div>
@@ -409,7 +455,7 @@ export default function Home() {
               </button>
 
               <p className="text-sm text-gray-500 mt-6">
-                Compatible macOS 13+ • Fichier .dmg
+                Compatible {os === 'windows' ? 'Windows 10+' : 'macOS 13+'} • Fichier {fileType}
               </p>
             </div>
           </div>
@@ -487,11 +533,11 @@ export default function Home() {
           <div className="mt-8 p-6 rounded-2xl bg-white/5 border border-white/10">
             <p className="text-center text-gray-400 text-sm">
               Vous pouvez aussi me contacter directement via{" "}
-              <a href="mailto:contact@farmer.app" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <a href="mailto:morillon.bapt@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">
                 email
               </a>
               {" "}ou sur{" "}
-              <a href="https://twitter.com/votre-username" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <a href="https://x.com/mrbee_m" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
                 Twitter
               </a>
             </p>
